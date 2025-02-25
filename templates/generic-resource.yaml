@@ -1,0 +1,28 @@
+{{- range .Values.resources }}
+---
+apiVersion: {{ .apiVersion }}
+kind: {{ .kind }}
+metadata:
+  name: {{ .metadata.name }}
+  namespace: {{ .metadata.namespace | default "default" }}
+  {{- if .metadata.labels }}
+  labels:
+    {{- toYaml .metadata.labels | nindent 4 }}
+  {{- end }}
+  {{- if .metadata.annotations }}
+  annotations:
+    {{- toYaml .metadata.annotations | nindent 4 }}
+  {{- end }}
+{{- if .spec }}
+spec:
+  {{- toYaml .spec | nindent 2 }}
+{{- end }}
+{{- if .data }}
+data:
+  {{- toYaml .data | nindent 2 }}
+{{- end }}
+{{- if .stringData }}
+stringData:
+  {{- toYaml .stringData | nindent 2 }}
+{{- end }}
+{{- end }}

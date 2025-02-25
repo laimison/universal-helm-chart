@@ -1,0 +1,65 @@
+resources:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: my-configmap
+      namespace: default
+    data:
+      key1: "value1"
+      key2: "value2"
+
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: my-deployment
+      namespace: default
+    spec:
+      replicas: 2
+      selector:
+        matchLabels:
+          app: my-app
+      template:
+        metadata:
+          labels:
+            app: my-app
+        spec:
+          containers:
+            - name: my-container
+              image: nginx:latest
+              ports:
+                - containerPort: 80
+
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: my-ingress
+      namespace: default
+    spec:
+      rules:
+        - host: myapp.example.com
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: my-service
+                    port:
+                      number: 80
+
+  - apiVersion: argoproj.io/v1alpha1
+    kind: AppProject
+    metadata:
+      labels:
+        argocd.argoproj.io/instance: applications
+      name: applications
+      namespace: argocd
+    spec:
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+      destinations:
+      - namespace: '*'
+        server: '*'
+      sourceRepos:
+      - '*'
