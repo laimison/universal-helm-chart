@@ -29,6 +29,15 @@ echo 'resources:
         - name: sleep-container
           image: busybox
           args: ["sleep", "infinity"]
+  - apiVersion: v1
+    kind: Pod
+    metadata:
+      name: universal-helm-chart-pod-2
+    spec:
+      containers:
+        - name: sleep-container
+          image: busybox
+          args: ["sleep", "infinity"]
 ' > /tmp/values.yaml
 
 helm repo add universal-helm-chart https://laimison.github.io/universal-helm-chart
