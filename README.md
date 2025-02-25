@@ -10,7 +10,7 @@ Use cases:
 
 * You don't find required functionality in existing chart
 
-* You're waiting for pull request to be merged in another chart so you want extra resources
+* You're waiting for pull request to be merged in another chart so you want extra resources right now using universal-helm-chart
 
 * You don't want to complicate your pipeline by building extra Helm chart so you use universal-helm-chart
 
