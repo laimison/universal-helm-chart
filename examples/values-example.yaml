@@ -1,9 +1,17 @@
 resources:
   - apiVersion: v1
+    kind: Pod
+    metadata:
+      name: universal-helm-chart-pod
+    spec:
+      containers:
+        - name: sleep-container
+          image: busybox
+          args: ["sleep", "infinity"]
+  - apiVersion: v1
     kind: ConfigMap
     metadata:
-      name: my-configmap
-      namespace: default
+      name: universal-helm-chart-configmap
     data:
       key1: "value1"
       key2: "value2"
@@ -11,8 +19,7 @@ resources:
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: my-deployment
-      namespace: default
+      name: universal-helm-chart-deployment
     spec:
       replicas: 2
       selector:
@@ -32,8 +39,7 @@ resources:
   - apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
-      name: my-ingress
-      namespace: default
+      name: universal-helm-chart-ingress
     spec:
       rules:
         - host: myapp.example.com
@@ -52,8 +58,7 @@ resources:
     metadata:
       labels:
         argocd.argoproj.io/instance: applications
-      name: applications
-      namespace: argocd
+      name: universal-helm-chart-application
     spec:
       clusterResourceWhitelist:
       - group: '*'
