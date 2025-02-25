@@ -4,15 +4,15 @@ A Helm chart to deploy any Kubernetes resource dynamically.
 
 Use cases:
 
-* You want to deploy extra resources on top of another chart eg Prometheus, ArgoCD, etc so one of these charts limits that action
+* You want to deploy extra resources on top of another chart eg Prometheus, ArgoCD, etc so one of these charts don't provide a way to get required resource
 
 * You don't want to use templates/ directory, for example here you can use multiple Helm sources, but no templates/ directory is supported https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository
-
-* You don't find required functionality in existing chart
 
 * You're waiting for pull request to be merged in another chart so you want extra resources right now using universal-helm-chart
 
 * You don't want to complicate your pipeline by building extra Helm chart so you use universal-helm-chart
+
+* You want to use universal-helm-chart to speed up debugging, testing or your POC
 
 * ... or whatever your reason is
 
