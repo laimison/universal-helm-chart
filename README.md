@@ -49,8 +49,8 @@ kubectl -n default get pods
 
 # Helm Chart Link
 
-https://laimison.github.io/universal-helm-chart
+[https://laimison.github.io/universal-helm-chart](https://laimison.github.io/universal-helm-chart)
 
 # Github Repo Link
 
-https://github.com/laimison/universal-helm-chart
+[https://github.com/laimison/universal-helm-chart](https://github.com/laimison/universal-helm-chart)
